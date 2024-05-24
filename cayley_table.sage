@@ -10,6 +10,14 @@ def cayley_table(G):
 
     return(table)
 
+def print_table(table):
+    max_width = max(len(str(item)) for row in table for item in row)
+
+    for row in table:
+        for item in row:
+            print(f"{str(item):^{max_width}}", end=" ")
+        print("\n")
+
 
 #### TEST CODE ####
 G = eval(input("Please enter a group in valid SageMath syntax: "))
@@ -17,7 +25,4 @@ while not G in Groups:
     G = eval(input("Please enter a group in valid SageMath syntax: "))
     print("Group is invalid. Please enter a valid group.")
 table = cayley_table(G)
-print("Cayley table for G:\n")
-for row in table:
-    print(row)
-
+print_table(table)

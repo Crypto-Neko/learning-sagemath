@@ -10,7 +10,3 @@ def find_order(G):
         order = order *gen.order()
 
     return(order)
-
-#### EXAMPLE CODE ####
-G = eval(input("Enter a finite abelian group: "))
-print(find_order(G))

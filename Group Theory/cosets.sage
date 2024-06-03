@@ -1,10 +1,15 @@
-# Problem 4: Find all cosets of a subgroup of a given group.
-def find_cosets(G, H):
-    if not H.is_subgroup(G):
-        return("H must be a subgroup of G.")
+# Problem #5: Verify Lagrange's Theorem for an arbitrary group.
+def verify_Lagrange(G, H):
+    if not H in G.subgroups():
+        raise ValueError("H should be a subgroup of G.")
 
-    cosets_of_subgroup = G.cosets(H)
-    n=1
-    for cs in cosets_of_subgroup:
-        print("Coset " + str(n) + ":" + str(cs))
-        n+=1
+    cosets = G.cosets(H)
+    for i in range(len(cosets)):
+        if cosets[i] not in cosets[:i]:
+            print("Unique coset #" + str(i+1) + ": " + str(cosets[i]))
+        else:
+            print("Error! Math is broken!")
+
+G = eval(input("Enter a group in valid SageMath syntax:     "))
+H = eval(input("Enter a subgroup in valid SageMath syntax:  "))
+verify_Lagrange(G, H)

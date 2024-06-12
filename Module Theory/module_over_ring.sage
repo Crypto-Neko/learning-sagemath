@@ -1,7 +1,7 @@
 # Problem 10: Define a module over a ring.
 def module_over_ring(R, n):
     if not R in Rings:
-        return ValueError("R must be a ring.")
+        raise ValueError("R must be a ring.")
 
     M = FreeModule(R, n)
     return M
